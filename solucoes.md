@@ -33,9 +33,9 @@ $$\beta = \frac{(\|x\| + x_1)}{\|x\|\|y\|^2} $$
 
 ## Letra b )
 
-Vamos verificar que alterações o sinal de $x_1$ pode provocar nas fórmulas para $\beta$, ou seja, segundo o informado pela questão, em qual das fórmulas estamos sujeitos a cancelamento numérico a depender do sinal de $x_1$, acredito que seja um pouco mais fácil de compreender através de como o $\textit{Treften}$ explica isso
+Vamos verificar que alterações o sinal de $x_1$ pode provocar nas fórmulas para $\beta$, ou seja, segundo o informado pela questão, em qual das fórmulas estamos sujeitos a cancelamento numérico a depender do sinal de $x_1$, acredito que seja um pouco mais fácil de compreender através de como o $\textit{Trefethen}$ explica isso
 
-Pelo que entendemos, o que queremos evitar aqui é o problema evitado por $\textit{Treften}$ ao selecionar $v$ como 
+Pelo que entendemos, o que queremos evitar aqui é o problema evitado por $\textit{Trefethen}$ ao selecionar $v$ como 
 
 $$ v = sign(x_1)\|x\|e_1 + x$$
 
@@ -120,7 +120,7 @@ $$ J(v) = \begin{bmatrix}
         
 = I + e_1 \frac{x^*}{\|x\|}$$
 
-Sabemos que o condicionamento a absoluto de uma função $f$ é dado em termos de sua matriz Jacobiana, assim
+Sabemos que o condicionamento absoluto de uma função $f$ é dado em termos de sua matriz Jacobiana, assim
 
 $$ k =  \|J\| = \| I + e_1 \frac{x^*}{\|x\|}\| \leq  \| I \| +  \| e_1 \frac{x^*}{\|x\|}\| = 1 + \frac{1}{\|x\|}\|e_1x^*\| = 1 +  \frac{1}{\|x\|}\|e_1\|\|x\|$$
 Como $\|e_1\| = 1$, então
