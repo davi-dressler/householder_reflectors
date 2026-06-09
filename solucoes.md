@@ -164,7 +164,7 @@ A aplicação da da matriz $Q_v$ pela direita faz $$AQ_v = A(I - \beta vv^*) = A
 
 ## Letra a)
 
-Vamos analisar melhor o que é esse tipo de matriz que nos foi dada, que segundo o  que o professor falou em sala de aula, chama-se bloco de Jordan:
+Vamos analisar melhor o que é esse tipo de matriz que nos foi dada:
 
 $$ A(w) = \begin{bmatrix} 0 & 1 \\ -w^2 & 0\end{bmatrix}$$
 
