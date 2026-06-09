@@ -33,9 +33,9 @@ $$\beta = \frac{(\|x\| + x_1)}{\|x\|\|y\|^2} $$
 
 ## Letra b )
 
-Vamos verificar que alterações o sinal de $x_1$ pode provocar nas fórmulas para $\beta$, ou seja, segundo o informado pela questão, em qual das fórmulas estamos sujeitos a cancelamento numérico a depender do sinal de $x_1$, acredito que seja um pouco mais fácil de compreender através de como o $\textit{Trefethen}$ explica isso
+Vamos verificar que alterações o sinal de $x_1$ pode provocar nas fórmulas para $\beta$, ou seja, segundo o informado pela questão, em qual das fórmulas estamos sujeitos a cancelamento numérico a depender do sinal de $x_1$, acredito que seja um pouco mais fácil de compreender através de como o $\textit{Treften}$ explica isso
 
-Pelo que entendemos, o que queremos evitar aqui é o problema evitado por $\textit{Trefethen}$ ao selecionar $v$ como 
+Pelo que entendemos, o que queremos evitar aqui é o problema evitado por $\textit{Treften}$ ao selecionar $v$ como 
 
 $$ v = sign(x_1)\|x\|e_1 + x$$
 
@@ -120,7 +120,7 @@ $$ J(v) = \begin{bmatrix}
         
 = I + e_1 \frac{x^*}{\|x\|}$$
 
-Sabemos que o condicionamento absoluto de uma função $f$ é dado em termos de sua matriz Jacobiana, assim
+Sabemos que o condicionamento a absoluto de uma função $f$ é dado em termos de sua matriz Jacobiana, assim
 
 $$ k =  \|J\| = \| I + e_1 \frac{x^*}{\|x\|}\| \leq  \| I \| +  \| e_1 \frac{x^*}{\|x\|}\| = 1 + \frac{1}{\|x\|}\|e_1x^*\| = 1 +  \frac{1}{\|x\|}\|e_1\|\|x\|$$
 Como $\|e_1\| = 1$, então
@@ -129,7 +129,7 @@ $$ k \leq 1+ \frac{\|x\|}{\|x\|} = 2$$
 
 ## Letra e )
 
-Como requisitado pela questão faremos testes com vetores $x$ com entradas aleatórias nos tipos $\textit{Float32}$ e $\textit{Float64}$
+Como requisitado pela questão faremos testes com vetores $x$ com entradas aleatórias nos tipos $\textit{Float32}$ e $\textit{Float64}$. Vimos que um caso em que queremos evitar, devido ao cancelamento numérico são os caso em que $x_1$ é muito próximo em módulo a $\|x\|$. Isso quer dizer que o vetor está próximo de estar alinhado a $e_1$. Portanto, faremos os testes com vetores fora e dentro deste caso. 
 
 
 ## Letra f ) 
@@ -182,16 +182,8 @@ $$ \begin{bmatrix} -\lambda & 1 \\ -w^2 & -\lambda\end{bmatrix} \begin{bmatrix} 
 
 Dessa forma, $$ v_1 = \begin{bmatrix} 1 \\ iw\end{bmatrix} \quad v_2 = \begin{bmatrix} 1 \\ -iw\end{bmatrix}  $$
 
-A partir dessas conclusões, podemos esperar que com $ w \rightarrow 0^+ $ nossos autovalores $|\lambda_1| , |\lambda_2| \rightarrow 0$ e nossos autovetores $v_1, v_2 \rightarrow \begin{bmatrix} 1 \\ 0\end{bmatrix}$. Vamos verificar em código,
+A partir dessas conclusões, podemos esperar que com $ w \rightarrow 0^+ $ nossos autovalores $\lambda_1 , \lambda_2 \rightarrow 0$ e nossos autovetores $v_1, v_2 \rightarrow \begin{bmatrix} 1 \\ 0\end{bmatrix}$. Vamos verificar em código, como os autovalores só possuem a parte complexa, vamos plotar apenas a parte complexa no eixo y.
 
 ## Letra b )
-
-Fazendo os cálculos, basicamente, verificando $A^*A$, encontrando os valores singulares, verificando que $V=I$, encontrando $U$, chegamos à conclusão de que a SVD de $A(w)$ é
-
-$$ A(w) = \begin{bmatrix} 0 & 1 \\ -1 & 0\end{bmatrix} \begin{bmatrix} w^2 & 0 \\ 0 & 1\end{bmatrix} \begin{bmatrix} 1 & 0 \\ 0 & 1\end{bmatrix}$$
-
-Sabemos que $$k(A) = \frac{\sigma_{max}}{\sigma_{min}}$$
-
-Logo, como $w^2 \leq 1$ para $w \in [0,1]$, então temos que $$k(A) = \frac{1}{w^2}$$
 
 ## Letra c )
