@@ -195,3 +195,36 @@ Sabemos que $$k(A) = \frac{\sigma_{max}}{\sigma_{min}}$$
 Logo, como $w^2 \leq 1$ para $w \in [0,1]$, então temos que $$k(A) = \frac{1}{w^2}$$
 
 ## Letra c )
+
+Primeiramente vamos demonstrar $A(\omega)^2 = - \omega I $:
+
+$$
+A(\omega)^2 = \begin{bmatrix} 0 & 1 \\ -\omega^2 & 0 \end{bmatrix}
+\begin{bmatrix} 0 & 1 \\ -\omega^2 & 0 \end{bmatrix}
+
+= \begin{bmatrix} -\omega^2 & 0 \\ 0 & -\omega^2 \end{bmatrix}
+= -\omega^2 \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+= -\omega^2 I
+$$
+
+E para a dedução, sabems que:
+$$
+e = \sum_{i=0}^{\infty} \frac{x^n}{n!}
+$$
+E portanto:
+$$
+e^{t A(\omega)} = \sum_{i=0}^{\infty} \frac{(t A(\omega))^n}{n!}
+$$
+Abrindo nós obtemos:
+$$
+e^{t A(\omega)} = \frac{(t A(\omega))^0}{0!} + \frac{(t A(\omega))^1}{1!} + \frac{(t A(\omega))^2}{2!} + \frac{(t A(\omega))^3}{3!} + ...
+= I + t A(\omega) - \frac{t^2  \omega^2 I}{2!} - \frac{t^3  \omega^2 A(\omega)}{3!} + ...\\
+$$
+Dividindo os termos de expoente ímpar por $\omega$:
+$$
+e^{t A(\omega)} = I + \frac{t A(\omega)}{\omega} - \frac{t^2  \omega^2 I}{2!} - \frac{t^3  \omega^3 A(\omega)}{3! \omega} + ...\\
+$$
+Chegamos a dois somatórios um para os termos de grau ímpar e outro para termos de grau par:
+$$
+e^{t A(\omega)} = \sum_{i=0}^{\infty} \frac{(-1)^n}{(2n)!} (\omega t)^{2n} I + \sum_{j=0}^{\infty} \frac{(-1)^n}{(2n + 1)!} (\omega t)^{2n + 1} A(\omega)
+$$
