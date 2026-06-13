@@ -138,6 +138,40 @@ Sabemos que a matriz $Q_v$ não está definida como normalmente. $\textit{Trefth
 
 $$ \beta =  \frac{2}{v^*v} $$
 
+## Letra g )
+
+Temos que o condicionamento relativo de um problema tem a seguinte fórmula:
+$$
+k = \hat{k} \frac{\Vert x \Vert}{\Vert v \Vert}
+$$
+Onde $\hat{k}$ é o condicionamento absoluto. Em paralelo temos:
+$$
+v = x - \Vert x \Vert e_1 = \begin{bmatrix}x_1 - \Vert x \Vert  \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
+$$
+Disso conseguimos deduzir:
+$$
+\Vert v \Vert^2 = (x_1 - \Vert x \Vert)^2 + \sum^n_{i=2} x^2_i = x_1^2 - 2x_1 \Vert x \Vert + \Vert x \Vert^2 + \sum^n_{i=2} x^2_i
+$$
+Agregando o somatório a $x_1$: 
+$$
+\Vert v \Vert^2 = - 2x_1 \Vert x \Vert + \Vert x \Vert^2 + \Vert x \Vert^2 = 2 \Vert x \Vert (\Vert x \Vert - x_1)
+$$
+Substituindo o resultado encontrado na fórmula do condicionamento encontramos o seguinte resultado:
+$$
+k = \hat{k} \frac{\Vert x \Vert}{\sqrt{2 \Vert x \Vert (\Vert x \Vert - x_1)}}
+$$
+Portanto, quanto mais x se aproxima de $e_1$ o denominador da expressão encontrada tende a zero e portanto o condicionamento
+explode.
+
+Uma boa fórmula para $v$ que mitiga o problema do condicionamento afetado pela proximidade de $x$ a $e_1$ pode ser encontrada baseando-se
+nos resultados obtidos no item b), onde definimos $v$ da seguinte maneira:
+$$
+v = x + sig(x_1) \Vert x \Vert e_1
+$$
+
+Já que assim o módulo de $x_1$ sempre estaria se distanciando de 0 e mantendo $x$ longe da direção de $e_1$ impedindo que o condicionamento exploda.
+
+
 # Questão 2 
 
 ## Letra a )
@@ -228,3 +262,41 @@ Chegamos a dois somatórios um para os termos de grau ímpar e outro para termos
 $$
 e^{t A(\omega)} = \sum_{i=0}^{\infty} \frac{(-1)^n}{(2n)!} (\omega t)^{2n} I + \sum_{j=0}^{\infty} \frac{(-1)^n}{(2n + 1)!} (\omega t)^{2n + 1} A(\omega)
 $$
+Analisando as parcelas dessa soma conseguimos enxergar as semelhanças desses somatórios com as séries de taylor refentes ao cosseno e seno, respectivamente:
+
+$$
+\cos{x} = \sum_{i=0}^{\infty} \frac{(-1)^n}{(2n)!} (x)^{2n} 
+$$
+$$
+\sin{x} = \sum_{j=0}^{\infty} \frac{(-1)^n}{(2n + 1)!} (x)^{2n + 1}
+$$
+
+Multiplicados por $ I $ e $A(\omega)$ nessa ordem. Por fim, chegamos em:
+$$
+e^{t A(\omega)} = \cos{(\omega t)} I + \frac{\sin{\omega t}}{\omega} A(\omega)
+$$
+**Como queriamos demonstrar.**
+
+Quando $\omega \rightarrow 0^+$:
+
+$$
+\lim_{\omega \rightarrow 0^+} \cos{(\omega t)} I + \frac{\sin{\omega t}}{\omega} A(\omega)
+$$
+$$
+= \cos{(0)} I + \lim_{\omega \rightarrow 0^+} \begin{bmatrix}0 & \frac{\sin{\omega t}}{\omega}
+\\ -\omega \sin{\omega t} & 0\end{bmatrix}
+= I + \begin{bmatrix} 0 & t \\ 0 & 0 \end{bmatrix}
+= \begin{bmatrix} 1 & t \\ 0 & 1 \end{bmatrix}
+$$
+Verificando os somatórios:
+$$
+\lim_{\omega \rightarrow 0^+} e^{t A(\omega)} = I + \begin{bmatrix} 0 & t \\ 0 & 0 \end{bmatrix} + \sum_{i=2}^{\infty} \frac{(t A(0))^n}{n!} 
+$$
+Mas $A(0)$ é a matriz nilpotente e portanto os demais termos da soma serão iguais a zero:
+
+$$
+\lim_{\omega \rightarrow 0^+} e^{t A(\omega)} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} + \begin{bmatrix} 0 & t \\ 0 & 0 \end{bmatrix} + 0
+= \begin{bmatrix} 1 & t \\ 0 & 1 \end{bmatrix}
+$$
+
+O que bate com o resultado que encontramos anteriormente.
